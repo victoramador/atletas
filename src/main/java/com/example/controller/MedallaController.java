@@ -30,4 +30,5 @@ public class MedallaController {
     public Map<TipoMedalla, List<Medalla>> getMedallasGroupByTipo() {
         return medallaRepository.findAll().parallelStream().collect(Collectors.groupingBy(Medalla::getTipoMedalla));
     }
+
 }
