@@ -17,6 +17,7 @@ public class AtletaService {
     @Autowired
     private MedallaRepository medallaRepository;
     public void testAtletas(){
+
         Atleta a1 = new Atleta("aaa", "sdf", "Española", LocalDate.of(1991, 11, 29));
         atletaRepository.save(a1);
         Atleta a2 = new Atleta("bbb", "fj", "Fracesa", LocalDate.of(1924, 11, 29));
@@ -33,6 +34,7 @@ public class AtletaService {
         Medalla m3 = new Medalla(TipoMedalla.valueOf("PLATA"),"Atletismo", "1", a4);
         Medalla m4 = new Medalla(TipoMedalla.valueOf("BRONCE"),"Ciclismo", "1", a2);
         Medalla m5 = new Medalla(TipoMedalla.valueOf("BRONCE"),"Baloncesto", "1", a5);
+
         medallaRepository.save(m1);
         medallaRepository.save(m2);
         medallaRepository.save(m3);

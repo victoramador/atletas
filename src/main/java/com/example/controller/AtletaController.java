@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping("/atletas")
 public class AtletaController {
+
     @Autowired
     private AtletaRepository atletaRepository;
 
@@ -25,34 +26,20 @@ public class AtletaController {
         return atletaRepository.findAll();
     }
 
-    //Devolver todos los atletas de una nacionalidad determinada
     @GetMapping("/{nacionalidad}")
     public List<Atleta> getAtletasByNacionalidad(@PathVariable String nacionalidad){
-        return atletaRepository
-                .findAll()
-                .parallelStream()
-                .filter(atleta -> atleta.getNacionalidad().toLowerCase().equals(nacionalidad.toLowerCase()))
-                .collect(Collectors.toList());
+        return atletaRepository.findAll().parallelStream().filter(atleta -> atleta.getNacionalidad().toLowerCase().equals(nacionalidad.toLowerCase())).collect(Collectors.toList());
     }
 
-    //Devolver todos los atletas que hayan nacido en una fecha anterior a una fecha determinada
     @GetMapping("/nacimiento-antes/{nacimientoStr}")
     public List<Atleta> getAtletasNacimientoAntesDe(@PathVariable String nacimientoStr){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDate nacimiento = LocalDate.parse(nacimientoStr, formatter);
-        return atletaRepository
-                .findAll()
-                .parallelStream()
-                .filter(atleta -> atleta.getNacimiento().isBefore(nacimiento))
-                .collect(Collectors.toList());
+        return atletaRepository.findAll().parallelStream().filter(atleta -> atleta.getNacimiento().isBefore(nacimiento)).collect(Collectors.toList());
     }
 
-    //Retornar todos los atletas agrupados por nacionalidad en un Map<String, List<Atleta>>
     @GetMapping("/groupby/nacionalidad")
     public Map<String, List<Atleta>> getAtletasGroupByNacionalidad(){
-            return atletaRepository
-                .findAll()
-                .parallelStream()
-                .collect(Collectors.groupingBy(Atleta::getNacionalidad));
+            return atletaRepository.findAll().parallelStream().collect(Collectors.groupingBy(Atleta::getNacionalidad));
     }
 }

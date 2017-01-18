@@ -13,8 +13,11 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @RestController
+
 @RequestMapping("/medallas")
+
 public class MedallaController {
+
     @Autowired
     private MedallaRepository medallaRepository;
 
@@ -23,12 +26,8 @@ public class MedallaController {
         return medallaRepository.findAll();
     }
 
-    //Retornar todos los atletas agrupados por tipo de medalla en un map<TipoMedalla,<Atleta>>
     @GetMapping("/groupby/tipo")
-    public Map<TipoMedalla, List<Medalla>> getMedallasGroupByTipo(){
-        return medallaRepository
-                .findAll()
-                .parallelStream()
-                .collect(Collectors.groupingBy(Medalla::getTipoMedalla));
+    public Map<TipoMedalla, List<Medalla>> getMedallasGroupByTipo() {
+        return medallaRepository.findAll().parallelStream().collect(Collectors.groupingBy(Medalla::getTipoMedalla));
     }
 }
