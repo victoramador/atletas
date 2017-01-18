@@ -17,15 +17,15 @@ public class AtletaService {
     @Autowired
     private MedallaRepository medallaRepository;
     public void testAtletas(){
-        Atleta a1 = new Atleta("Fulanito", "Tal", "Española", LocalDate.of(1990, 10, 29));
+        Atleta a1 = new Atleta("aaa", "sdf", "Española", LocalDate.of(1991, 11, 29));
         atletaRepository.save(a1);
-        Atleta a2 = new Atleta("Benganito", "Tal", "Española", LocalDate.of(1994, 1, 9));
+        Atleta a2 = new Atleta("bbb", "fj", "Fracesa", LocalDate.of(1924, 11, 29));
         atletaRepository.save(a2);
-        Atleta a3 = new Atleta("Menganito", "Prueba", "Inglesa", LocalDate.of(1992, 8, 5));
+        Atleta a3 = new Atleta("ccc", "rty", "Inglesa", LocalDate.of(1942, 2, 25));
         atletaRepository.save(a3);
-        Atleta a4 = new Atleta("Atletilla", "Aaaa", "Italiano", LocalDate.of(1996, 12, 16));
+        Atleta a4 = new Atleta("ddd", "yuk", "Estadounidense", LocalDate.of(1965, 12, 26));
         atletaRepository.save(a4);
-        Atleta a5 = new Atleta("Crack", "Mundial", "Madagascar", LocalDate.of(1988, 3, 14));
+        Atleta a5 = new Atleta("eee", "jkg", "Japones", LocalDate.of(1953, 5, 22));
         atletaRepository.save(a5);
 
         Medalla m1 = new Medalla(TipoMedalla.valueOf("ORO"),"Atletismo", "1", a1);
